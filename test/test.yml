@@ -1,0 +1,5 @@
+helloworld: #HELLO_WORLD#
+foo:
+  bar: "#FOO_BAR#"
+key: "value"
+

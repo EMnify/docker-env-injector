@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  test:
+    image: alpine:3.9
+    volumes:
+      - env-inject:/test/
+    command: sh -c "cat /test/*"
+    depends_on:
+      - env-injector
+
+  env-injector:
+    build:
+      context: .
+    image: emnify/env-injector:latest
+    volumes:
+      - ./test/:/test/
+      - env-inject:/injected/
+      - ./envInject.sh:/init.sh
+    command:
+     - /test/
+     - /injected/
+    environment:
+      - HELLO_WORLD=1337
+      - FOO_BAR=this is a value
+
+volumes:
+  env-inject:
+
