@@ -1,6 +1,4 @@
-FROM alpine:3.9
-
-RUN apk add --no-cache bash
+FROM bash:5.0.2
 
 COPY envInject.sh /init.sh
 
