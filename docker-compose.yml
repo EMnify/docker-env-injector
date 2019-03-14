@@ -22,7 +22,7 @@ services:
      - /injected/
     environment:
       - HELLO_WORLD=1337
-      - FOO_BAR=this is a value
+      - FOO_BAR=this is a value = @
 
 volumes:
   env-inject:

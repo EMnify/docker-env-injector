@@ -14,7 +14,7 @@ KEYS=()
 VALUES=()
 INDEX=0
 while read -r KEY; do
-  VALUES+=("$(env | egrep "^${KEY}=" | cut -d "=" -f2)")
+  VALUES+=("$(env | egrep "^${KEY}=" | cut -d "=" -f2- )")
   KEYS+=("${KEY}")
   INDEX=$(( INDEX + 1))
 done <<< "${VAR_NAMES}"
@@ -22,6 +22,6 @@ done <<< "${VAR_NAMES}"
 for FILE in ${SOURCE_DIR}/*; do
   cp ${FILE} ${DESTINATION_DIR}/$(basename ${FILE})
   for i in $(seq 0 $((${#KEYS[@]} - 1))); do
-    sed -i -e "s@#${KEYS[i]}#@${VALUES[i]}@g" ${DESTINATION_DIR}/$(basename ${FILE})
+    sed -i -e "s@#${KEYS[i]//@/\\@}#@${VALUES[i]//@/\\@}@g" ${DESTINATION_DIR}/$(basename ${FILE})
   done;
 done
