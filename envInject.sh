@@ -8,7 +8,7 @@ fi
 
 SOURCE_DIR=$(realpath ${1})
 DESTINATION_DIR=$(realpath ${2})
-VAR_NAMES=$(egrep -oh "#[^ ].*[^ ]#" ${SOURCE_DIR}/* | cut -d "#" -f2 | sort | uniq)
+VAR_NAMES=$(egrep -roh "#[^ ].*[^ ]#" ${SOURCE_DIR}/* | cut -d "#" -f2 | sort | uniq)
 
 KEYS=()
 VALUES=()
@@ -20,8 +20,13 @@ while read -r KEY; do
 done <<< "${VAR_NAMES}"
 
 for FILE in ${SOURCE_DIR}/*; do
-  cp ${FILE} ${DESTINATION_DIR}/$(basename ${FILE})
+  cp -R ${FILE} ${DESTINATION_DIR}/$(basename ${FILE})
+done
+
+FILES=$(find ${DESTINATION_DIR} -type f)
+
+for FILE in ${FILES}; do
   for i in $(seq 0 $((${#KEYS[@]} - 1))); do
-    sed -i -e "s@#${KEYS[i]//@/\\@}#@${VALUES[i]//@/\\@}@g" ${DESTINATION_DIR}/$(basename ${FILE})
+    sed -i -e "s@#${KEYS[i]//@/\\@}#@${VALUES[i]//@/\\@}@g" ${FILE}
   done;
 done

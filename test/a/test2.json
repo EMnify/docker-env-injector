@@ -1,5 +1,5 @@
 {
-  "file": "test.json",
+  "file": "/a/test2.json",
   "helloWorld": "#HELLO_WORLD#",
   "key": "value"
 }

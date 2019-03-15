@@ -5,7 +5,7 @@ services:
     image: bash:5.0.2
     volumes:
       - env-inject:/test/
-    command: sh -c "cat /test/*"
+    command: sh -c "find /test -type f -print0 | xargs -0 cat"
     depends_on:
       - env-injector
 
