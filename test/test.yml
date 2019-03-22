@@ -3,4 +3,4 @@ helloworld: #HELLO_WORLD#
 foo:
   bar: "#FOO_BAR#"
 key: "value"
-
+defaultNotDisplayed: "#FOO_BAR#this is not displayed#"

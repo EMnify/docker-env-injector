@@ -1,6 +1,8 @@
 {
   "file": "/a/test2.json",
   "helloWorld": "#HELLO_WORLD#",
-  "key": "value"
+  "key": "value",
+  "default": "#DEF#MY VALUE = ##",
+  "sameKeyOtherDefault": "#DEF#ANOTHER DEFAULT @@@#"
 }
 
