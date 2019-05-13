@@ -8,7 +8,7 @@ fi
 
 SOURCE_DIR=$(realpath ${1})
 DESTINATION_DIR=$(realpath ${2})
-VAR_NAMES=$(egrep -roh "#[^ \n]*#(.*[#*])?" ${SOURCE_DIR}/* | sort | uniq)
+VAR_NAMES=$(egrep -roh "#[^ \n]*#(.*[#*])?" ${SOURCE_DIR}/* | sort -r | uniq)
 
 KEYS=()
 VALUES=()
