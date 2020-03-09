@@ -3,6 +3,7 @@
   "helloWorld": "#HELLO_WORLD#",
   "key": "value",
   "default": "#DEF#MY VALUE = ##",
-  "sameKeyOtherDefault": "#DEF#ANOTHER DEFAULT @@@#"
+  "sameKeyOtherDefault": "#DEF#ANOTHER DEFAULT @@@#",
+  "regexWithDefault": "/.*#DEF#ANOTHER DEFAULT @@@#.*/"
 }
 
